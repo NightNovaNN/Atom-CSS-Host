@@ -1,2 +1,3 @@
-# Atom-CSS-Example
-Example for Atom-CSS with a website
+# Atom-CSS-Host
+Host for Atom-CSS with a website  
+Check `Atom-CSS` for more info
