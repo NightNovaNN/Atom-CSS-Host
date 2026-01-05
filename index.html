@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATOM.css Test</title>
+
+  <!-- Highlight.js for syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="atom.css">
+</head>
+
+<body>
+
+  <!-- Sidebar Example -->
+  <div class="sidebar">
+    <h2>Sidebar Navigation</h2>
+    <ul class="list-none">
+      <li><a href="#" class="text-blue">Home</a></li>
+      <li><a href="#" class="text-blue">About</a></li>
+      <li><a href="#" class="text-blue">Contact</a></li>
+    </ul>
+  </div>
+
+  <button class="btn sidebar-toggle">☰</button>
+
+  <div class="main-content flex col gap-5 max-w-4xl mx-auto">
+
+    <h1 class="text-lg">ATOM.css v0.1 - Enhanced Demo</h1>
+
+    <!-- Tabs/Pages Example (now properly switches content) -->
+    <section class="flex col gap-3">
+      <h2>Tabs/Pages</h2>
+      <div class="tabs">
+        <div class="tab-labels">
+          <!-- Labels are now in a wrapper, but contents are siblings to inputs/labels -->
+        </div>
+        <input type="radio" id="tab1" name="tab-group" checked>
+        <label for="tab1" class="tab-label">Page 1</label>
+        <div class="tab-content">Content for Page 1: This is the first page/tab.</div>
+
+        <input type="radio" id="tab2" name="tab-group">
+        <label for="tab2" class="tab-label">Page 2</label>
+        <div class="tab-content">Content for Page 2: Different content here!</div>
+
+        <input type="radio" id="tab3" name="tab-group">
+        <label for="tab3" class="tab-label">Page 3</label>
+        <div class="tab-content">Content for Page 3: Yet more unique content.</div>
+      </div>
+    </section>
+
+    <!-- Code Block with Syntax Highlighting -->
+    <section class="flex col gap-3">
+      <h2>Code Block with Syntax Highlighting</h2>
+      <div class="code-wrap">
+        <button class="copy-btn">Copy</button>
+        <pre><code class="language-python">
+def greet(name):
+    return f"Hello, {name}!"
+
+print(greet("ATOM.css"))
+                </code></pre>
+      </div>
+    </section>
+
+    <!-- Lists with Custom Bullets -->
+    <section class="flex col gap-3">
+      <h2>Custom Bullet Lists</h2>
+      <ul class="list-square">
+        <li>Item 1</li>
+        <li>Item 2</li>
+      </ul>
+    </section>
+
+    <!-- Textarea Example -->
+    <section class="flex col gap-3">
+      <h2>Improved Textarea</h2>
+      <textarea placeholder="Type something here..."></textarea>
+    </section>
+
+    <!-- Additional Features: Card, Alert, Progress -->
+    <section class="flex col gap-3">
+      <h2>Card</h2>
+      <div class="card">
+        <h3>Card Title</h3>
+        <p>Card content with shadow and hover effect.</p>
+      </div>
+    </section>
+
+    <section class="flex col gap-3">
+      <h2>Alert</h2>
+      <div class="alert alert-success">Success message!</div>
+    </section>
+
+    <section class="flex col gap-3">
+      <h2>Progress Bar</h2>
+      <div class="progress">
+        <div class="progress-bar" style="width: 60%;"></div>
+      </div>
+    </section>
+
+    <!-- Other sections like Buttons, Labels, Accordion, Tooltip, Modal – keep as in previous demo -->
+
+  </div>
+  <script src="atom.js"></script>
+
+</body>
+
+</html>
