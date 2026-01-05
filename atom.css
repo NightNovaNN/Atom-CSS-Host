@@ -1,0 +1,339 @@
+/* ---------- Design Tokens ---------- */
+:root {
+    /* Fonts (configurable) */
+    --font-body: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-headings: var(--font-body);
+    --font-code: "JetBrains Mono", Consolas, Monaco, monospace;
+
+    /* Default theme: dark */
+    --bg-0: #0d1117;
+    --bg-1: #161b22;
+    --bg-2: #21262d;
+    --bg-code: #0b0e14;
+    --bg-accent: #30363d;
+
+    --text-main: #e6edf3;
+    --text-muted: #7d8590;
+
+    --blue: #58a6ff;
+    --purple: #a5a3ff;
+    --green: #7ce38b;
+    --orange: #ffa657;
+    --red: #ff7b72;
+    --yellow: #e3b341;
+
+    /* radius */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+
+    /* spacing */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+
+    /* transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Light theme */
+:root[data-theme="light"] {
+    --bg-0: #ffffff;
+    --bg-1: #f6f8fa;
+    --bg-2: #e1e4e8;
+    --bg-code: #f6f8fa;
+    --bg-accent: #d1d5da;
+
+    --text-main: #24292e;
+    --text-muted: #6a737d;
+
+    --blue: #0366d6;
+    --purple: #6f42c1;
+    --green: #28a745;
+    --orange: #d15704;
+    --red: #d73a49;
+    --yellow: #dbab09;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Base Reset ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg-0);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-headings);
+    margin-bottom: var(--space-2);
+    font-weight: 600;
+}
+
+code,
+pre {
+    font-family: var(--font-code);
+}
+
+/* ---------- Improved Typography & Lists ---------- */
+ul,
+ol {
+    margin-left: var(--space-4);
+    margin-bottom: var(--space-3);
+}
+
+ul {
+    list-style-type: disc;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+/* Custom bullet styles */
+.list-circle {
+    list-style-type: circle;
+}
+
+.list-square {
+    list-style-type: square;
+}
+
+.list-none {
+    list-style-type: none;
+}
+
+li {
+    margin-bottom: var(--space-1);
+}
+
+/* ---------- New: Sidebar ---------- */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 250px;
+    background: var(--bg-1);
+    padding: var(--space-4);
+    overflow-y: auto;
+    border-right: 1px solid var(--bg-2);
+    transition: transform var(--transition-normal);
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: var(--space-5);
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80%;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+.sidebar-toggle {
+    position: fixed;
+    top: var(--space-2);
+    left: var(--space-2);
+    z-index: 10;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .sidebar-toggle {
+        display: block;
+    }
+}
+
+/* ---------- Textarea Improvements ---------- */
+textarea {
+    width: 100%;
+    min-height: 100px;
+    background: var(--bg-1);
+    color: var(--text-main);
+    border: 1px solid var(--bg-2);
+    padding: var(--space-2);
+    border-radius: var(--radius-sm);
+    resize: vertical;
+    transition: border-color var(--transition-fast);
+    font-family: var(--font-body);
+}
+
+textarea:focus {
+    border-color: var(--blue);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2);
+}
+
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+/* ---------- Code Blocks & Syntax Highlighting ---------- */
+pre {
+    position: relative;
+    margin: var(--space-4) 0;
+    padding: var(--space-4);
+    overflow-x: auto;
+    background: var(--bg-code);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--blue);
+    /* Default */
+    transition: box-shadow var(--transition-normal);
+}
+
+pre:hover {
+    box-shadow: var(--shadow-md);
+}
+
+code {
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+/* Highlight.js overrides to match theme (already handled by github-dark.css) */
+
+/* Remove language-specific borders if using Highlight.js */
+/* .py-code, .js-code, etc. can be removed or kept for custom */
+
+/* Inline Code */
+.inline-code {
+    padding: 2px 8px;
+    background: var(--bg-2);
+    border-radius: var(--radius-sm);
+    font-size: 0.88em;
+}
+
+/* ---------- Improved Tabs/Pages ---------- */
+.tabs {
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-labels {
+    display: flex;
+    border-bottom: 1px solid var(--bg-2);
+}
+
+.tab-label {
+    padding: var(--space-2) var(--space-3);
+    cursor: pointer;
+    background: var(--bg-1);
+    color: var(--text-muted);
+    transition: background var(--transition-fast), color var(--transition-fast);
+    border-top-left-radius: var(--radius-sm);
+    border-top-right-radius: var(--radius-sm);
+}
+
+.tab-label:hover {
+    background: var(--bg-2);
+    color: var(--text-main);
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked+.tab-label {
+    background: var(--bg-0);
+    color: var(--text-main);
+    border-bottom: 2px solid var(--blue);
+}
+
+.tab-content {
+    display: none;
+    padding: var(--space-4);
+    background: var(--bg-0);
+    border: 1px solid var(--bg-2);
+    border-top: none;
+}
+
+input[type="radio"]:checked+.tab-label+.tab-content {
+    display: block;
+}
+
+.card {
+    background: var(--bg-1);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-fast);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+/* Alerts */
+.alert {
+    padding: var(--space-3);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-3);
+}
+
+.alert-info {
+    background: rgba(88, 166, 255, 0.1);
+    border-left: 4px solid var(--blue);
+}
+
+.alert-success {
+    background: rgba(124, 227, 139, 0.1);
+    border-left: 4px solid var(--green);
+}
+
+.alert-warning {
+    background: rgba(255, 166, 87, 0.1);
+    border-left: 4px solid var(--orange);
+}
+
+.alert-danger {
+    background: rgba(255, 123, 114, 0.1);
+    border-left: 4px solid var(--red);
+}
+
+/* Progress Bar */
+.progress {
+    height: 8px;
+    background: var(--bg-2);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--blue);
+    transition: width var(--transition-normal);
+}
+
